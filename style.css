@@ -77,20 +77,44 @@ body {
 .item3 {
   transform: rotateZ(105deg);
 }
+.item3:hover {
+  background-size: 20px;
+}
+.item3:active {
+  background-size: 30px;
+}
 .item4 {
   font-size: 25px;
 }
 .item5 {
   transform: rotateZ(-65deg);
 }
+.item5:hover {
+  background-size: 20px;
+}
+.item5:active {
+  background-size: 30px;
+}
 .item6 {
   transform: rotateZ(105deg);
+}
+.item6:hover {
+  background-size: 20px;
+}
+.item6:active {
+  background-size: 30px;
 }
 .item7 {
   font-size: 25px;
 }
 .item8 {
   transform: rotateZ(-65deg);
+}
+.item8:hover {
+  background-size: 20px;
+}
+.item8:active {
+  background-size: 30px;
 }
 
 
@@ -103,14 +127,25 @@ body {
   background-position: center;
   
 }
+.play:hover {
+  background-size: 50px;
+}
+.play:active {
+background-size: 60px;
+}
 .stop {
   background-image: url(img/stop.png);
   background-repeat: no-repeat;
   background-size: 40px;
   background-position: center;
-  
   grid-column-start: 3;
   grid-column-end: 6;
+}
+.stop:hover {
+  background-size: 50px;
+}
+.stop:active {
+  background-size: 60px;
 }
 .session {
   grid-column-start: 1;
@@ -125,7 +160,6 @@ body {
   font-family: orbitron;
   font-size: 35px;
   color: blue;
-  
 }
 .pausa {
   background-image: url(img/pausa.png);
@@ -134,6 +168,12 @@ body {
   background-position: center;
   grid-column-start: 1;
   grid-column-end: 3;
+}
+.pausa:hover {
+  background-size: 50px;
+}
+.pausa:active {
+  background-size: 60px;
 }
 .reset {
   text-align: center;
