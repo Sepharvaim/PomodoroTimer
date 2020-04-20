@@ -9,37 +9,48 @@ let item6 = document.querySelector(".item6");
 let item8 = document.querySelector(".item8");
 let timeClock = document.querySelector(".time");
 let playButton = document.querySelector(".play");
-
-
+let stopButton = document.querySelector(".stop");
+let pauseButton = document.querySelector(".pausa");
+let ongoing = true;
 
 
 item3.addEventListener("click", () => {
-  if (studyTime.innerHTML === "10") {
-    return studyTime.innerHTML;
-  } else {
-    studyTime.innerHTML = reduceNumber(studyTime.innerHTML);
-    minutes = studyTime.innerHTML;
-    timeClock.innerHTML = studyTime.innerHTML +":"+ "00";
-  }
-})
-item6.addEventListener("click", () => {
-  if (breakTime.innerHTML === "2") {
-    return breakTime.innerHTML;
-  } else {
-    breakTime.innerHTML = reduceNumber(breakTime.innerHTML);
-    minutesBreak = breakTime.innerHTML;
+  
+  if (ongoing) {
+    if (studyTime.innerHTML === "10") {
+      return studyTime.innerHTML;
+    } else {
+      studyTime.innerHTML = reduceNumber(studyTime.innerHTML);
+      minutes = studyTime.innerHTML;
+      timeClock.innerHTML = studyTime.innerHTML +":"+ "00";
+    }
   }
 })
 
+item6.addEventListener("click", () => {
+  if (ongoing) {
+      if (breakTime.innerHTML === "2") {
+        return breakTime.innerHTML;
+      } else {
+        breakTime.innerHTML = reduceNumber(breakTime.innerHTML);
+        minutesBreak = breakTime.innerHTML;
+      }
+  }    
+})
+
 item5.addEventListener("click", () => {
-  studyTime.innerHTML = addNumber(studyTime.innerHTML);
-  minutes = studyTime.innerHTML;
-  timeClock.innerHTML = studyTime.innerHTML + ":" + "00";
-  
+
+  if (ongoing) {      
+      studyTime.innerHTML = addNumber(studyTime.innerHTML);
+      minutes = studyTime.innerHTML;
+      timeClock.innerHTML = studyTime.innerHTML + ":" + "00";
+  }
 })
 item8.addEventListener("click", () => {
-  breakTime.innerHTML = addNumber(breakTime.innerHTML);
-  minutesBreak = breakTime.innerHTML;
+  if (ongoing) {    
+      breakTime.innerHTML = addNumber(breakTime.innerHTML);
+      minutesBreak = breakTime.innerHTML;
+  }
 })
 
 function reduceNumber(tempo) {
@@ -52,11 +63,30 @@ function addNumber(tempo) {
   return tempo + 1;
 }
 
-
 let seconds = 0;
 let minutes = studyTime.innerHTML;
 let minutesBreak = breakTime.innerHTML;
 let secondsBreak = 0;
+
+
+let oneCall = true;
+let interval = false;
+
+
+
+stopButton.addEventListener("click", () => {
+  stopAll();
+})
+
+pauseButton.addEventListener("click", () => {
+  pauseAll();
+  oneCall = true;
+})
+
+
+
+
+
 
 function breakwatch() {
         
@@ -99,14 +129,13 @@ function breakwatch() {
 
 }
 
-let oneCall = true;
-let interval = false;
 
     
     
     playButton.addEventListener('click', () =>{
       if (oneCall === true) {
-        interval = window.setInterval(stopWatch,100);  
+        ongoing = false;
+        interval = window.setInterval(stopWatch,1000);  
         oneCall = false;
       } 
     })
@@ -114,8 +143,24 @@ let interval = false;
 
 
 function stopAll() {
+          studyTime.innerHTML = 25;
+          breakTime.innerHTML = 5;
+          timeClock.innerHTML = studyTime.innerHTML+":"+"00";
+          oneCall = true;
+          seconds = 0;
+          minutes = studyTime.innerHTML;
+          minutesBreak = breakTime.innerHTML;
+          secondsBreak = 0;
+          clearInterval(interval);
+          ongoing = true;
 
 }
+
+function pauseAll() {
+          clearInterval(interval);
+}
+
+
 
 function stopWatch() {
       // if (minutes === 0 && seconds === 0) {}
@@ -144,7 +189,7 @@ function stopWatch() {
     
     var audio = new Audio('sound/session.mp3');
     audio.play();
-    interval = window.setInterval(breakwatch, 100);
+    interval = window.setInterval(breakwatch, 1000);
   }
   
 }
