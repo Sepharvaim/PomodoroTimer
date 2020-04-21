@@ -17,7 +17,7 @@ let ongoing = true;
 item3.addEventListener("click", () => {
   
   if (ongoing) {
-    if (studyTime.innerHTML === "10") {
+    if (studyTime.innerHTML === "2") {
       return studyTime.innerHTML;
     } else {
       studyTime.innerHTML = reduceNumber(studyTime.innerHTML);
@@ -124,6 +124,7 @@ function breakwatch() {
           minutes = studyTime.innerHTML;
           minutesBreak = breakTime.innerHTML;
           secondsBreak = 0;
+          ongoing = true;
         }
         
 
@@ -179,11 +180,13 @@ function stopWatch() {
           } else if (minutes > 9 && seconds > 9) {
             
             timeClock.innerHTML = +minutes + ":" + seconds;
-          } else if (minutes > 9 && seconds < 9) {
+          } else if (minutes > 10 && seconds < 10) {
             timeClock.innerHTML =  minutes +":"+"0"+ seconds; 
           } else {
             timeClock.innerHTML = "0"+minutes +":"+ seconds;
           }
+
+
   } else { 
     clearInterval(interval);
     
@@ -191,5 +194,5 @@ function stopWatch() {
     audio.play();
     interval = window.setInterval(breakwatch, 1000);
   }
-  
+  document.title = timeClock.innerHTML;
 }

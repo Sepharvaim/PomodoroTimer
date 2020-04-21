@@ -9,6 +9,7 @@
 }
 body {
   background-color: burlywood;
+  background-image: url(img/background.png);
   font-family: Oswald;
   color: white;
 }
