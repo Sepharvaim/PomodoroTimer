@@ -181,3 +181,6 @@ background-size: 60px;
   grid-column-start: 3;
   grid-column-end: 5;
 }
+.reset {
+  font-size: 20px;
+}

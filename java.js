@@ -11,6 +11,11 @@ let timeClock = document.querySelector(".time");
 let playButton = document.querySelector(".play");
 let stopButton = document.querySelector(".stop");
 let pauseButton = document.querySelector(".pausa");
+let resetButton = document.querySelector(".reset");
+let gameTime = +localStorage.getItem('gameTime') || 0;
+resetButton.innerHTML = `Gaming's hours gained: ${Math.floor((gameTime/60))}.${gameTime%60} `
+
+
 let ongoing = true;
 
 
@@ -115,10 +120,10 @@ function breakwatch() {
 
         } else {
           clearInterval(interval);
-          
           var audio = new Audio('sound/break.mp3');
           audio.play();
           timeClock.innerHTML = studyTime.innerHTML+":"+"00";
+          
           oneCall = true;
           seconds = 0;
           minutes = studyTime.innerHTML;
@@ -144,7 +149,7 @@ function breakwatch() {
 
 
 function stopAll() {
-          studyTime.innerHTML = 25;
+          studyTime.innerHTML = 45;
           breakTime.innerHTML = 5;
           timeClock.innerHTML = studyTime.innerHTML+":"+"00";
           oneCall = true;
@@ -192,6 +197,13 @@ function stopWatch() {
     
     var audio = new Audio('sound/session.mp3');
     audio.play();
+
+    gameTime += 15;
+    localStorage.setItem('gameTime', gameTime);
+    resetButton.innerHTML = `Gaming's hours gained: ${Math.floor((gameTime/60))}.${gameTime%60}`
+          
+
+
     interval = window.setInterval(breakwatch, 1000);
   }
   document.title = timeClock.innerHTML;
