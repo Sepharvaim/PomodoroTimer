@@ -2,7 +2,7 @@
   font-family: Oswald;
   src: url("oswald.ttf");
 }
-* { 
+* {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -49,19 +49,16 @@ body {
 }
 .pomodoroTimer > div {
   padding: 5px;
-
 }
 .arrow {
   background: url(img/arrow.png);
   background-repeat: no-repeat;
   background-position: center;
   background-size: 15px;
-
 }
 .pomodoroSet > div {
   /* border: 1px solid grey; */
   font-family: orbitron;
-  
 }
 .item1 {
   grid-column-start: 1;
@@ -118,7 +115,6 @@ body {
   background-size: 30px;
 }
 
-
 .play {
   grid-column-start: 1;
   grid-column-end: 3;
@@ -126,13 +122,12 @@ body {
   background-repeat: no-repeat;
   background-size: 40px;
   background-position: center;
-  
 }
 .play:hover {
   background-size: 50px;
 }
 .play:active {
-background-size: 60px;
+  background-size: 60px;
 }
 .stop {
   background-image: url(img/stop.png);
@@ -151,9 +146,6 @@ background-size: 60px;
 .session {
   grid-column-start: 1;
   grid-column-end: 6;
-  
-  
-  
 }
 .time {
   grid-column-start: 1;
@@ -183,4 +175,27 @@ background-size: 60px;
 }
 .reset {
   font-size: 20px;
+}
+
+.grapicContainer {
+  display: flex;
+  flex-flow: column;
+  height: 80px;
+  background-color: yellow;
+}
+.weekHours {
+  display: flex;
+  color: black;
+  justify-content: space-around;
+  /* align-items: flex-start; */
+
+  width: 450px;
+  margin-top: 15px;
+  margin-bottom: 10px;
+}
+
+.weekLetters {
+  display: flex;
+  justify-content: space-around;
+  color: red;
 }
