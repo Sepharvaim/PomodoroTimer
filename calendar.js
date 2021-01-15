@@ -101,10 +101,11 @@ let weekDay = today.getDay();
 function addHoursSpend(tempo) {
     let todayDiv = document.querySelector('.weekHours').children[weekDay]
     let addInHour = Number(tempo); // inner html di minuti 
+ todayDiv.innerHTML = +todayDiv.innerHTML + +addInHour
 
-    todayDiv.innerHTML = +todayDiv.innerHTML + +addInHour
-    console.log(hours)
-    hours[today.getDay()] = (+hours[today.getDay()] + +addInHour) > 60 ? (+hours[today.getDay()] + +addInHour) / 60 : (+hours[today.getDay()] + +addInHour);
-    console.log(hours)
+    // hours[today.getDay()] = (+hours[today.getDay()] + +addInHour) > 60 ? (+hours[today.getDay()] + +addInHour) / 60 : (+hours[today.getDay()] + +addInHour);
+    hours[today.getDay()] = +hours[today.getDay()] + +addInHour
     localStorage.setItem('hours', hours);
+    console.log(localStorage.getItem('hours')[weekDay])
+    todayDiv.innerHTML = (localStorage.getItem('hours').split(',')[weekDay]) / 60;
 }
