@@ -24,7 +24,7 @@ let timePassed = (currentDayMilliSeconds - timeStarter) / 1000 / 60 / 60 / 24;  
 
 let checkTimePassed = (function () {
 
-    if (timePassed > 4) {
+    if (timePassed > 7) {
         setMonday();
         let obj = {
             D: hours[0],
