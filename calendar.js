@@ -24,7 +24,7 @@ let timePassed = (currentDayMilliSeconds - timeStarter) / 1000 / 60 / 60 / 24;  
 
 let checkTimePassed = (function () {
 
-    if (timePassed > 7) {
+    if (timePassed > 4) {
         setMonday();
         let obj = {
             D: hours[0],
@@ -101,7 +101,7 @@ let weekDay = today.getDay();
 function addHoursSpend(tempo) {
     let todayDiv = document.querySelector('.weekHours').children[weekDay]
     let addInHour = Number(tempo); // inner html di minuti 
- todayDiv.innerHTML = +todayDiv.innerHTML + +addInHour
+    todayDiv.innerHTML = +todayDiv.innerHTML + +addInHour
 
     // hours[today.getDay()] = (+hours[today.getDay()] + +addInHour) > 60 ? (+hours[today.getDay()] + +addInHour) / 60 : (+hours[today.getDay()] + +addInHour);
     hours[today.getDay()] = +hours[today.getDay()] + +addInHour
