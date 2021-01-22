@@ -36,7 +36,7 @@ let checkTimePassed = (function () {
             S: hours[6]
         }
 
-        var arrayOfWeek = localStorage.getItem('weeks') || [];
+        var arrayOfWeek = JSON.parse(localStorage.getItem('weeks')) || [];
         console.log('array of week', arrayOfWeek);
         arrayOfWeek.push(obj)
         localStorage.setItem('weeks', JSON.stringify(arrayOfWeek));
