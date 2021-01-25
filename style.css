@@ -27,6 +27,10 @@ body {
   font-weight: bold;
   color: #333;
 }
+.title h1 {
+  text-shadow: -1px 0 rgb(230, 224, 224), 0 1px rgb(255, 254, 254),
+    1px 0 rgb(219, 212, 212), 0 -1px #000;
+}
 .pomodoroSet {
   height: 90px;
   margin-top: 5px;
@@ -153,6 +157,8 @@ body {
   font-family: orbitron;
   font-size: 35px;
   color: blue;
+  text-shadow: -1px 0 rgb(150, 116, 116), 0 1px rgb(189, 21, 21),
+    1px 0 rgb(177, 20, 20), 0 -1px rgb(224, 120, 120);
 }
 .pausa {
   background-image: url(img/pausa.png);

@@ -17,14 +17,16 @@ let hours = [];
     }
 })();
 
+
+
 let checkWeekStorage = localStorage.getItem('starter');
-let timeStarter = new Date(checkWeekStorage); // secondi 
+let timeStarter = new Date(checkWeekStorage); // secondi // se nullo ritorno 1 gennaio 1970 
 let currentDayMilliSeconds = today.valueOf();
 let timePassed = (currentDayMilliSeconds - timeStarter) / 1000 / 60 / 60 / 24;  // tempo trascorso ogni volta che entro o faccio un ciclo 
-
+console.log(timePassed)
 let checkTimePassed = (function () {
 
-    if (timePassed > 7) {
+    if (timePassed > 7 && timePassed < 10) {
         setMonday();
         let obj = {
             D: hours[0],
@@ -45,7 +47,9 @@ let checkTimePassed = (function () {
 
         let storeHoursSpent = localStorage.getItem('hours'); // se il dato esiste e non e' nullo 
         let nodeListTime = document.querySelectorAll('.week');
+
         storeHoursSpent = storeHoursSpent.split(',').map(elem => +elem); // risolvere NaN
+        console.log(storeHoursSpent);
         hours = storeHoursSpent;
         for (let i = 0; i < storeHoursSpent.length; i++) {
             nodeListTime[i].innerHTML = storeHoursSpent[i];
@@ -90,22 +94,20 @@ function setMonday() {
     localStorage.setItem('starter', starterDay);
 }
 
-
-
-
-// let studyHour = 0;
-
 let weekDay = today.getDay();
-
 
 function addHoursSpend(tempo) {
     let todayDiv = document.querySelector('.weekHours').children[weekDay]
     let addInHour = Number(tempo); // inner html di minuti 
-    todayDiv.innerHTML = +todayDiv.innerHTML + +addInHour
+    todayDiv.innerHTML = +todayDiv.innerHTML + addInHour
 
     // hours[today.getDay()] = (+hours[today.getDay()] + +addInHour) > 60 ? (+hours[today.getDay()] + +addInHour) / 60 : (+hours[today.getDay()] + +addInHour);
-    hours[today.getDay()] = +hours[today.getDay()] + +addInHour
+    hours[today.getDay()] = +hours[today.getDay()] + addInHour
     localStorage.setItem('hours', hours);
-    console.log(localStorage.getItem('hours')[weekDay])
-    todayDiv.innerHTML = (localStorage.getItem('hours').split(',')[weekDay]) / 60;
+    let transformToHours = localStorage.getItem('hours').split(',');
+
+    for (let i = 0; i < 7; i++) {
+        document.querySelector('.weekHours').children[i].innerHTML = Math.floor(transformToHours[i] / 60) + "." + (transformToHours[i] % 60);
+    }
+    // todayDiv.innerHTML = (localStorage.getItem('hours').split(',')[weekDay]) / 60;
 }
